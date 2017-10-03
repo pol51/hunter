@@ -153,6 +153,11 @@ Customization
   * Visual Studio
   * Adds ``-opengl desktop``
   * `Qt Configure Options <https://doc.qt.io/qt-5/configure-options.html>`__
+  
+* ``QT_WITH_OPENSSL``
+
+  * Build with :ref:`pkg.OpenSSL`
+  * You will need this when building Qt application with SSL support  
 
 Pitfalls
 --------

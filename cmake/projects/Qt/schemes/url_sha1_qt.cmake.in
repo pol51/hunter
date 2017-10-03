@@ -199,6 +199,14 @@ elseif("@MINGW@")
   list(APPEND configure_opts -opengl "desktop")
 endif()
 
+if(QT_WITH_OPENSSL)
+  hunter_add_package(OpenSSL)
+  set(ENV{OPENSSL_LIBS} "-L${OPENSSL_ROOT}/lib -lssl -lcrypto")
+  list(APPEND configure_opts "-openssl-linked")
+else()
+  list(APPEND configure_opts "-no-openssl")
+endif()
+
 if(QT_WITH_GSTREAMER)
   hunter_add_package(gst_plugins_bad)
   hunter_add_package(gst_plugins_good)
@@ -259,7 +267,6 @@ if(NOT WIN32)
   list(APPEND configure_opts "-no-xinput2")
 endif()
 list(APPEND configure_opts "-no-icu")
-list(APPEND configure_opts "-no-openssl")
 ### }
 
 ### Predictable configuration {
